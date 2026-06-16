@@ -110,7 +110,7 @@ def main():
         os.environ["MKL_NUM_THREADS"] = str(args.threads)
         cv2.setNumThreads(args.threads)
     else:
-        cv2.setNumThreads(os.cpu_count())
+        cv2.setNumThreads(os.cpu_count() or 1)
 
     providers = ["CUDAExecutionProvider", "CPUExecutionProvider"] if args.gpu else ["CPUExecutionProvider"]
 
@@ -182,7 +182,7 @@ def main():
         print(f"  Target face index: {args.target_index}")
     print(f"  Enhancement: {'ON' if args.enhance else 'OFF'}")
 
-    fourcc = cv2.VideoWriter_fourcc(*"mp4v")
+    fourcc = cv2.VideoWriter.fourcc(*"mp4v")
     out = cv2.VideoWriter(args.output, fourcc, fps, (width, height))
 
     frame_idx = 0

@@ -1,0 +1,6 @@
+{
+  "typeCheckingMode": "basic",
+  "extraPaths": ["typings"],
+  "reportIndexIssue": false,
+  "reportArgumentType": false
+}
